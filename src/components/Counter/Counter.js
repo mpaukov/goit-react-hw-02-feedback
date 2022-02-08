@@ -1,6 +1,6 @@
 import { Component } from 'react';
 
-import styles from './Counter.module.css';
+// import styles from './Counter.module.css';
 
 class Counter extends Component {
   static defaultProps = {
