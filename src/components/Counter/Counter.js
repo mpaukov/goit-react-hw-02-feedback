@@ -15,9 +15,17 @@ class Counter extends Component {
     bad: this.props.bad,
   };
 
-  handleIncrement = () => {
+  handleIncrement = event => {
     this.setState(prevState => {
-      return { good: prevState.good + 1 };
+      switch (event.target.dataset.action) {
+        case 'good':
+          return { good: prevState.good + 1 };
+        case 'neutral':
+          return { neutral: prevState.neutral + 1 };
+        case 'bad':
+          return { bad: prevState.bad + 1 };
+        default:
+      }
     });
   };
 
@@ -26,13 +34,17 @@ class Counter extends Component {
       <div style={{ textAlign: 'center' }}>
         <h1>Please, leave feedback</h1>
 
-        <button type="button" onClick={this.handleIncrement}>
+        <button type="button" onClick={this.handleIncrement} data-action="good">
           Good
         </button>
-        <button type="button" onClick={this.handleIncrement}>
+        <button
+          type="button"
+          onClick={this.handleIncrement}
+          data-action="neutral"
+        >
           Neutral
         </button>
-        <button type="button" onClick={this.handleIncrement}>
+        <button type="button" onClick={this.handleIncrement} data-action="bad">
           Bad
         </button>
         <h2>Statistics</h2>
