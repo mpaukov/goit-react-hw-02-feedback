@@ -29,6 +29,16 @@ class Counter extends Component {
     });
   };
 
+  countTotalFeedback() {
+    const { good, neutral, bad } = this.state;
+    return good + neutral + bad;
+  }
+
+  countPositiveFeedbackPercentage() {
+    const { good } = this.state;
+    return good / this.countTotalFeedback();
+  }
+
   render() {
     return (
       <div style={{ textAlign: 'center' }}>
@@ -53,6 +63,16 @@ class Counter extends Component {
         <span>Neutral: {this.state.neutral}</span>
         <p></p>
         <span>Bad: {this.state.bad}</span>
+        <p></p>
+        <span>Total: {this.countTotalFeedback()}</span>
+        <p></p>
+        <span>
+          Positive Feedback:
+          {this.countPositiveFeedbackPercentage()
+            ? this.countPositiveFeedbackPercentage().toFixed(2)
+            : 0}
+          %
+        </span>
         <p></p>
       </div>
     );
