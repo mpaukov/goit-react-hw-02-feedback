@@ -17,6 +17,7 @@ const feedBackOptions = ({ options, onLeaveFeedback }) => {
 
 feedBackOptions.propTypes = {
   options: PropTypes.arrayOf(PropTypes.string.isRequired),
+  onLeaveFeedback: PropTypes.func.isRequired,
 };
 
 export default feedBackOptions;
