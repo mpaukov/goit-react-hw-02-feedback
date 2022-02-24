@@ -26,17 +26,9 @@ export class App extends Component {
   }
 
   onLeaveFeedback = event => {
+    const { name } = event.target;
     this.setState(prevState => {
-      switch (event.target.dataset.action) {
-        case 'good':
-          return { good: prevState.good + 1 };
-        case 'neutral':
-          return { neutral: prevState.neutral + 1 };
-        case 'bad':
-          return { bad: prevState.bad + 1 };
-        default:
-          return;
-      }
+      return { [name]: prevState[name] + 1 };
     });
   };
 
@@ -49,7 +41,7 @@ export class App extends Component {
       <>
         <Section title="Please leave feedback">
           <FeedbackOptions
-            options={['good', 'neutral', 'bad']}
+            options={Object.keys(this.state)}
             onLeaveFeedback={this.onLeaveFeedback}
           />
         </Section>
